@@ -1,0 +1,9 @@
+#!/bin/bash
+
+scp `date '+libcsp-%Y-%m-%d.tar.gz'` \
+    rickbeton@shell.sourceforge.net:/home/groups/l/li/libcsp/htdocs
+
+echo
+echo Now log in and extract the new files in the tarball.
+echo
+ssh -l rickbeton libcsp.sourceforge.net

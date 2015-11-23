@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD html 4.0 transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="AUTHOR" content="Richard Beton">
+<title>libcsp by Richard Beton</title>
+<style type="text/css">
+ body {
+  background-color: #FFFFFF;
+  color: #000080;
+ }
+ :link { color: #990000 }
+ :visited { color: #000080 }
+ :active { color: #990000 }
+ .reddish { color: #990000; font-family: Arial,Helvetica; }
+ td.reddish i { color: #FF9900; }
+ h1 { text-align: center; }
+ h4 { color: #009900; }
+ code { font-family: Arial,Helvetica; }
+ .footnote { font-size: 70%; color: #009900; }
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+<tr>
+<td class="reddish"><b><i>Richard Beton's</i> libcsp...</b></td>
+</tr>
+</table>
+
+<h1 class="reddish">CSP For Posix Threads</h1>
+
+<p><i>Communicating Sequential Processes</i> is a mathematical
+algebra for analysing the behaviour of concurrent systems.
+Because most software systems interact with the real world, they
+are concurrent to a greater or lesser extent.</p>
+
+<p>libcsp is a library that provides for C programmers a level of
+abstraction that makes programming with threads much easier. By
+providing an easy mechanism to express and reason about programs
+with multiple threads, it becomes easier to fit software into the
+real world.<br>
+</p>
+
+<p>In essence, libcsp is a C library that provides the benefits
+previously known to <code>occam</code> programmers:</p>
+
+<ul>
+<li>threads communicate by passing messages;<br>
+<br>
+</li>
+
+<li>when a message is passed between threads, the sender and the
+receiver have to rendezvous in time - usually this means one
+thread has to wait for the other;<br>
+<br>
+</li>
+
+<li>receiver threads can select between alternate channels -
+called 'alternation' in CSP;<br>
+<br>
+</li>
+
+<li>as in <code>occam</code> and unlike CSP itself, senders cannot
+alternate between output sources (this would cause serious
+implementation problems and is provably not necessary).</li>
+</ul>
+
+<p>So the two most important points are that the concept enables
+<b>mathematical proofs</b> of correct thread behaviour, and
+alternation makes for <b>simple system design</b>.
+</p>
+
+<hr width="50%" noshade="noshade" />
+<h4>Download:</h4>
+
+<ul>
+<li><a href="LICENCE.txt"><b>Licence</b></a> (Lesser GPL)</li>
+
+<li><a href="libcsp-2001-06-12.tar.gz"><b>Latest release</b></a>
+(libcsp-2001-06-12.tar.gz) v0.50 beta.</li>
+
+<li><a href="README.txt"><b>README.txt</b></a> release
+notes.</li>
+
+<li><a href="csa2000-talk.pps">CPA2000 Conference Talk</a> slide
+show (presented at
+<a href="http://wotug.ukc.ac.uk/cpa2000/index.shtml">Communicating
+Process Architectures - 2000</a>)</li>
+
+<li><a href="http://sourceforge.net/projects/libcsp/"><b>Libcsp</b></a>
+development resources on Sourceforge.</li>
+</ul>
+
+<hr width="50%" noshade="noshade" />
+<h4>Further information:</h4>
+
+<ul>
+<li><b>CSP</b><br>
+<blockquote>
+<a href="http://wotug.ukc.ac.uk/csp.shtml"
+>http://wotug.ukc.ac.uk/csp.shtml</a>
+<br>
+<a href="http://wotug.ukc.ac.uk/parallel/theory/formal/csp/"
+>http://wotug.ukc.ac.uk/parallel/theory/formal/csp/</a>
+</blockquote>
+</li>
+
+<li><b><code>occam</code></b><br>
+<blockquote>
+<a href="http://wotug.ukc.ac.uk/parallel/occam/"
+>http://wotug.ukc.ac.uk/parallel/occam/</a>
+<br>
+<a href="http://archive.comlab.ox.ac.uk/archive/occam.html"
+>http://archive.comlab.ox.ac.uk/archive/occam.html</a>
+</blockquote>
+</li>
+</ul>
+
+<a href="http://sourceforge.net/"
+><img src="http://sourceforge.net/sflogo.php?group_id=15077&type=1"
+ width="88" height="31" border="0" alt="This Website is hosted by SourceForge"
+ align="right"></a>
+
+<script type="text/javascript">
+document.write('<a href="mailto:')
+document.write('richard.beton')
+document.write('@physics.org"><span class="footnote">')
+document.write('richard.beton')
+document.write('@physics.org<\/span><\/a>')
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.o
+*.exe
+
+tests/chantest1
+tests/hello
+tests/hello2proc
+
+commstime/commstime
