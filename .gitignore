@@ -1,8 +1,18 @@
 *.o
 *.exe
+*.a
 
+tests/alttest1
+tests/alttest2
 tests/chantest1
+tests/chantest2
+tests/chantest3
 tests/hello
 tests/hello2proc
+tests/mchantest1
+tests/mutextest
 
 commstime/commstime
+
+depends.mk
+*.depends
