@@ -202,6 +202,10 @@ extern int CSP_chanInCopy (Channel * chan, void * cp, int cnt);
    Outputs a single integer on a channel.
 */
 extern void CSP_chanOutInt (Channel * c, int n);
+extern void CSP_chanOutInt64 (Channel * c, long n);
+extern void CSP_chanOutInt32 (Channel * c, int n);
+extern void CSP_chanOutInt16 (Channel * c, short n);
+extern void CSP_chanOutInt8 (Channel * c, char n);
 
 /*----------------------------------------------------------------------------
    CSP_chanInInt

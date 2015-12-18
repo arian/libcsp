@@ -178,6 +178,25 @@ void CSP_chanOutInt (Channel * c, int n)
     CSP_chanOutCopy (c, &n, sizeof (int));
 }
 
+void CSP_chanOutInt64 (Channel * c, long n)
+{
+    CSP_chanOutCopy (c, &n, sizeof (long));
+}
+
+void CSP_chanOutInt32 (Channel * c, int n)
+{
+    CSP_chanOutCopy (c, &n, sizeof (int));
+}
+
+void CSP_chanOutInt16 (Channel * c, short n)
+{
+    CSP_chanOutCopy (c, &n, sizeof (short));
+}
+
+void CSP_chanOutInt8 (Channel * c, char n)
+{
+    CSP_chanOutCopy (c, &n, sizeof (char));
+}
 
 /*----------------------------------------------------------------------------
  */
