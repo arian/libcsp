@@ -45,6 +45,7 @@ struct Process
     //Channel chan;         /* Used to indicate state */
     pthread_attr_t attr;
     pthread_t      threadId;
+    void * args;
 };
 
 extern Process *_IMS_AllProc;
