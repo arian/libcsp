@@ -79,13 +79,18 @@ static void condWait (pthread_cond_t * cond,
     if (status != 0) { err_abort (status, "cond wait", line); }
 }
 
+static int CSP_guardEnabled(Channel *c)
+{
+    return (c->altGuard == NULL || c->altGuard->callback(c->altGuard->context));
+}
+
 /*}}}  */
 /*{{{  static checkAlt */
 /*----------------------------------------------------------------------------
  */
 static void checkAlt (Channel * c, const char * msg)
 {
-    if (c->alt != NULL)
+    if (c->alt != NULL && CSP_guardEnabled(c))
     {
         mutexLock (&(c->alt->altMx), __LINE__);
 
@@ -333,7 +338,7 @@ int CSP_priAltSelect (CSP_Alt_t * alt, Channel ** clist, int nChans)
         mutexLock (&(c->mutex), __LINE__);
         DPRINTF (("alt1 locked mutex %d\n", i));
 
-        if (c->full && c->guardEnabled)
+        if (c->full && CSP_guardEnabled(c))
         {
             // found waiting guard
             selected = i;

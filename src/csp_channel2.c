@@ -91,7 +91,7 @@ void CSP_chanInit (Channel * c, CSP_ChanType_t type, int discriminant)
     c->discriminant  = discriminant;
     c->full          = 0;
     c->alt           = NULL;
-    c->guardEnabled  = 1;
+    c->altGuard      = NULL;
 
     status = pthread_mutex_init (&(c->mutex), NULL);
     if (status != 0) { err_abort (status, "init mutex", __LINE__); }

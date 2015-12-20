@@ -27,6 +27,7 @@
 
 #include <pthread.h>
 #include <string.h>
+#include <stdlib.h>
 
 /* CSP_ChanType_t enumerates the allowed channel multiplexing factors */
 typedef enum
@@ -48,6 +49,11 @@ struct CSP_Alt_t
 
 };
 
+struct CSP_Alt_Guard
+{
+    int (* callback)(void *);
+    void * context;
+};
 
 /* Channel is the main occam channel structure */
 struct CSP_Channel_t
@@ -65,7 +71,7 @@ struct CSP_Channel_t
     int     discriminant;  /* run-time type consistency checking */
     int     integer;       /* transferred data */
     void *  buffer;        /* ditto */
-    int     guardEnabled;  /* alt guard enable/disable */
+    struct CSP_Alt_Guard * altGuard;
 };
 
 typedef struct CSP_Alt_t     CSP_Alt_t;
