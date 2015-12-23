@@ -24,8 +24,8 @@
 SRCDIR = ../src
 #DEBUG = -g
 CC = gcc $(DEBUG) -I$(SRCDIR) -Wall -pthread -lrt -D_REENTRANT
-LIBFILES = $(SRCDIR)/libcsp$(DEBUG).a $(SRCDIR)/libimscsp$(DEBUG).a
-LIBOPT = -L$(SRCDIR) -limscsp$(DEBUG) -lcsp$(DEBUG)
+LIBFILES = $(SRCDIR)/libcsp$(DEBUG).a
+LIBOPT = -L$(SRCDIR) -lcsp$(DEBUG)
 TARGETS = commstime
 
 default: .depends donelibs $(TARGETS) occam.commstime

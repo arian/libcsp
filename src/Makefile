@@ -23,22 +23,18 @@
 
 #DEBUG = -g
 CC = gcc $(DEBUG) -I. -Wall -D_REENTRANT
-CSPOBJS = csp_channel.o csp_channel2.o csp_alt.o
+CSPOBJS = csp_channel.o csp_channel2.o csp_alt.o process.o channel.o
 #CSPOBJS = csp_channel.o csp_channel2.o csp_process.o csp_semaphor.o
-IMSOBJS = process.o semaphor.o channel.o
 
 #-------------------------------------------------------------------------------
 
 #.c.o:
 #       $(CC) -c $< -o $@
 
-default: libcsp$(DEBUG).a libimscsp$(DEBUG).a
+default: libcsp$(DEBUG).a
 
 libcsp$(DEBUG).a: .depends $(CSPOBJS)
 	ar cq $@ $(CSPOBJS)
-
-libimscsp$(DEBUG).a: .depends $(IMSOBJS)
-	ar cq $@ $(IMSOBJS)
 
 clean:
 	rm -f *.o *.a *.?~ .depends $(TESTS)
@@ -67,7 +63,7 @@ tarball:
 
 # to make the dependency file up to date do 'touch depends.mk; make depends'
 depends:
-	$(CC) -M $(CSPOBJS:.o=.c) $(IMSOBJS:.o=.c) >depends.mk
+	$(CC) -M $(CSPOBJS:.o=.c) >depends.mk
 
 include depends.mk
 

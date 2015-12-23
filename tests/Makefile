@@ -23,12 +23,12 @@
 
 SRCDIR = ../src
 #DEBUG = -g
-CC = gcc $(DEBUG) -I$(SRCDIR) -Wall -pthread -lrt -D_REENTRANT
-LIBFILES = $(SRCDIR)/libcsp$(DEBUG).a $(SRCDIR)/libimscsp$(DEBUG).a
-LIBOPT = -L$(SRCDIR) -limscsp$(DEBUG) -lcsp$(DEBUG)
+CC = gcc $(DEBUG) -I$(SRCDIR) -Wall -pthread
+LIBFILES = $(SRCDIR)/libcsp$(DEBUG).a
+LIBOPT = -L$(SRCDIR) -lcsp$(DEBUG)
 TARGETS = hello hello2proc mutextest \
 	  chantest1 chantest2 chantest3 \
-	  mchantest1 alttest1 alttest2
+	  mchantest1 alttest1 alttest2 pingpong pc
 
 default: .depends donelibs $(TARGETS)
 
@@ -58,6 +58,12 @@ alttest1: .depends alttest1.c $(LIBFILES)
 
 alttest2: .depends alttest2.c $(LIBFILES)
 	$(CC) alttest2.c -o $@ $(LIBOPT)
+
+pingpong: .depends pingpong.c $(LIBFILES)
+	$(CC) pingpong.c -o $@ $(LIBOPT)
+
+pc: .depends pc.c $(LIBFILES)
+	$(CC) pc.c -o $@ $(LIBOPT)
 
 donelibs:
 	cd $(SRCDIR); $(MAKE)

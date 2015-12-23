@@ -11,6 +11,8 @@ tests/hello
 tests/hello2proc
 tests/mchantest1
 tests/mutextest
+tests/pc
+tests/pingpong
 
 commstime/commstime
 
