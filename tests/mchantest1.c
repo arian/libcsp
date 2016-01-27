@@ -59,7 +59,7 @@ void world (void)
     for (i = 0; i < (2*N); i++)
     {
         CSP_chanInCopy (chan, text, -100);
-        printf (text);
+        puts (text);
     }
 }
 

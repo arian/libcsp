@@ -32,7 +32,7 @@ char* message = "hello world \260\n";
 void hello (void)
 {
     int i;
-    for (i = 0; message[i] != NULL; i++)
+    for (i = 0; message[i] != '\0'; i++)
     {
         CSP_chanOutInt (chan, message[i]);
     }

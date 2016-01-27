@@ -70,7 +70,7 @@ void hello (void)
     int i,j;
     for (j = 0; j < repeats; j++)
     {
-        for (i = 0; message[i] != NULL; i++)
+        for (i = 0; message[i] != '\0'; i++)
         {
             CSP_chanOutInt (chan, message[i]);
         }

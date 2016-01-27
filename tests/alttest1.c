@@ -37,7 +37,9 @@ void hello (const char* msg, Channel * c)
     char text[100];
     for (i = 0; i < N; i++)
     {
-        sprintf (text, msg, i);
+        int len = strlen(msg);
+        memcpy (text, msg, len + 1);
+        sprintf(text + len + 1, "%d", i);
         CSP_chanOutCopy (c, text, strlen(text)+1);
         usleep (drand48() * delay);
     }
@@ -69,7 +71,7 @@ void world (void)
         if (selected >= 0)
         {
             CSP_chanInCopy (clist[selected], text, -100);
-            printf (text);
+            puts (text);
         }
         else
         {
