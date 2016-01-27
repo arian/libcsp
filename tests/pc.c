@@ -4,13 +4,13 @@
 #include <unistd.h>
 #include <time.h>
 typedef struct  {
-  signed char *label;
+  char *label;
   Channel *number;
 } print_ProcessArgs;
 
 void print (Process *__csp_process__) {
   print_ProcessArgs *args = __csp_process__->args;
-  signed char *label = args->label;
+  char *label = args->label;
   Channel *number = args->number;
   {
     while (1) {

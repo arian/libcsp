@@ -65,13 +65,14 @@ struct CSP_Channel_t
     pthread_cond_t     fullSync;
     pthread_cond_t     emptySync;
     struct CSP_Alt_t * alt;
+    struct CSP_Alt_Guard * altGuard;
 
     int     hasReadQueue;  /* one2many, many2many */
     int     hasWriteQueue; /* many2one, many2many */
     int     discriminant;  /* run-time type consistency checking */
     int     integer;       /* transferred data */
     void *  buffer;        /* ditto */
-    struct CSP_Alt_Guard * altGuard;
+    int     isAsync;
 };
 
 typedef struct CSP_Alt_t     CSP_Alt_t;
@@ -130,6 +131,14 @@ extern Channel * CSP_chanAlloc (CSP_ChanType_t type, int discriminant);
 */
 extern void CSP_chanInit (Channel * c, CSP_ChanType_t type,
                           int discriminant);
+
+/*----------------------------------------------------------------------------
+   CSP_chanSetAsync
+
+   Changes the channel to an async channel. A temporary buffer is necessary
+   to hold the values until they are read.
+*/
+extern void CSP_chanSetAsync(Channel * c, void * asyncBuffer);
 
 /*----------------------------------------------------------------------------
    CSP_chanClose

@@ -195,15 +195,26 @@ void CSP_chanOutCopy (Channel * c, void * cp, int cnt)
 
     checkAlt (c, "checkAlt CSP_chanOutCopy");
 
-    c->buffer  = cp;
+    if (c->isAsync)
+    {
+      memcpy (c->buffer, cp, cnt);
+    }
+    else
+    {
+      c->buffer  = cp;
+    }
+
     c->integer = cnt;
     c->full    = 1;
 
     condSignal (&(c->fullSync), __LINE__, "signal full");
 
-    while (c->full)
+    if (c->isAsync == 0)
     {
-        condWait (&(c->emptySync), &(c->mutex), __LINE__, "out wait empty");
+      while (c->full)
+      {
+          condWait (&(c->emptySync), &(c->mutex), __LINE__, "out wait empty");
+      }
     }
 
     mutexUnlock (&(c->mutex), __LINE__);
@@ -230,6 +241,7 @@ int CSP_chanInCopy (Channel * c, void * cp, int cnt)
     }
 
     mutexLock (&(c->mutex), __LINE__);
+
     while (! c->full)
     {
         condWait (&(c->fullSync), &(c->mutex), __LINE__, "in wait full");
@@ -258,6 +270,7 @@ int CSP_chanInCopy (Channel * c, void * cp, int cnt)
 
     c->full = 0;
     condSignal (&(c->emptySync), __LINE__, "in signal empty");
+
     mutexUnlock (&(c->mutex), __LINE__);
 
     if (c->hasReadQueue)

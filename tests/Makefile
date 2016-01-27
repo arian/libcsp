@@ -65,6 +65,9 @@ pingpong: .depends pingpong.c $(LIBFILES)
 pc: .depends pc.c $(LIBFILES)
 	$(CC) pc.c -o $@ $(LIBOPT)
 
+async: .depends pc.c $(LIBFILES)
+	$(CC) async.c -o $@ $(LIBOPT)
+
 donelibs:
 	cd $(SRCDIR); $(MAKE)
 

@@ -90,6 +90,7 @@ void CSP_chanInit (Channel * c, CSP_ChanType_t type, int discriminant)
 
     c->discriminant  = discriminant;
     c->full          = 0;
+    c->isAsync       = 0;
     c->alt           = NULL;
     c->altGuard      = NULL;
 
@@ -115,6 +116,11 @@ void CSP_chanInit (Channel * c, CSP_ChanType_t type, int discriminant)
     }
 }
 
+void CSP_chanSetAsync(Channel * c, void * asyncBuffer)
+{
+    c->isAsync = 1;
+    c->buffer = asyncBuffer;
+}
 
 //}}}
 //{{{  CSP_chanClose
