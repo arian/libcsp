@@ -34,6 +34,7 @@ This file defines the tricky parts. See also csp_channel2.c
 #define DPRINTF(x)
 //#define DPRINTF(x) printf x
 
+
 /*{{{  static lock/unlock*/
 /*----------------------------------------------------------------------------
  */
@@ -151,6 +152,11 @@ void CSP_chanOutMove (Channel * c, void ** cp)
  */
 void CSP_chanInMove (Channel * c, void ** cp)
 {
+    if (c == NULL)
+    {
+        return;
+    }
+
     if (c->hasReadQueue)
     {
         mutexLock (&(c->readQueue), __LINE__);
@@ -184,6 +190,11 @@ void CSP_chanInMove (Channel * c, void ** cp)
  */
 void CSP_chanOutCopy (Channel * c, void * cp, int cnt)
 {
+    if (c == NULL)
+    {
+        return;
+    }
+
     if (c->hasWriteQueue)
     {
         mutexLock (&(c->writeQueue), __LINE__);
